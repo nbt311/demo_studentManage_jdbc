@@ -58,13 +58,31 @@ public class StudentModel implements StudentDAO {
             statement.setString(6,student.getClassRoom());
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage() +"Error");;
+            System.out.println(e.getMessage() +"Error");
         }
     }
 
     @Override
     public Student findStudentByID(int id) {
-        return null;
+        Student student = null;
+        try {
+            String sql = "SELECT * FROM student WHERE id = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1,id);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                String name = rs.getString(2);
+                String email = rs.getString(3);
+                String dateOfBirth = rs.getString(4);
+                String address = rs.getString(5);
+                String phone = rs.getString(6);
+                String classroom = rs.getString(7);
+                student = new Student(name, email, dateOfBirth, address,phone,classroom);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return student;
     }
 
     @Override
