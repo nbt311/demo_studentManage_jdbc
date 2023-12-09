@@ -14,7 +14,7 @@ import java.util.List;
 public class StudentModel implements StudentDAO {
     protected Connection conn;
 
-    public StudentModel(Collection conn) {
+    public StudentModel() {
         Database database = Database.getInstance();
         this.conn = database.connection();
     }
@@ -45,7 +45,21 @@ public class StudentModel implements StudentDAO {
 
     @Override
     public void addStudent(Student student) {
-
+        try {
+            String sql ="insert into student\n" +
+                    " (name, email, dateOfBirth, address, phone, classRoom)\n" +
+                    " values(?,?,?,?,?,?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1,student.getName());
+            statement.setString(2,student.getEmail());
+            statement.setString(3,student.getDateOfBirth());
+            statement.setString(4,student.getAddress());
+            statement.setString(5,student.getPhone());
+            statement.setString(6,student.getClassRoom());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage() +"Error");;
+        }
     }
 
     @Override
