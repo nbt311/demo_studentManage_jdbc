@@ -28,4 +28,16 @@ public class StudentController {
         RequestDispatcher dispatcher = req.getRequestDispatcher("/view/addStudent.jsp");
         dispatcher.forward(req, resp);
     }
+    public void addStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            String name = req.getParameter("name");
+            String email = req.getParameter("email");
+            String dateOfBirth = req.getParameter("dateOfBirth");
+            String address = req.getParameter("address");
+            String phone = req.getParameter("phone");
+            String classRoom = req.getParameter("classRoom");
+            Student student = new Student(name, email, dateOfBirth, address, phone, classRoom);
+            studentDAO.addStudent(student);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/view/addStudent.jsp");
+            dispatcher.forward(req,resp);
+    }
 }
