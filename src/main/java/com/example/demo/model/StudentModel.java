@@ -92,7 +92,20 @@ public class StudentModel implements StudentDAO {
 
     @Override
     public void editStudent(Student student) {
+        try {
+            String sql = "UPDATE student SET name = ? , email = ?, dateOfBirth = ?, address = ? , phone = ?, classRoom = ? WHERE id = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1,student.getName());
+            statement.setString(2,student.getEmail());
+            statement.setString(3,student.getDateOfBirth());
+            statement.setString(4,student.getAddress());
+            statement.setString(5,student.getPhone());
+            statement.setString(6,student.getClassRoom());
+            statement.executeUpdate();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
