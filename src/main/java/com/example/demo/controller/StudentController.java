@@ -40,4 +40,11 @@ public class StudentController {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/view/addStudent.jsp");
             dispatcher.forward(req,resp);
     }
+    public void showFormEditStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        Student student = studentDAO.findStudentByID(id);
+        req.setAttribute("student",student);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/view/editStudent.jsp");
+        dispatcher.forward(req,resp);
+    }
 }
