@@ -12,10 +12,28 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/list.css">
 </head>
 <body>
 <div class="container">
+    <div class="m-4">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a href="/student?action=add" class="navbar-brand">Add Student</a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse2">
+                    <form class="d-flex ms-auto" method="get">
+                        <input type="text" class="form-control me-sm-2"  name="key" value="${key}">
+                        <button type="submit" class="btn btn-outline-light">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
 <div class="row">
 <div class="col-lg-12">
 <div class="main-box clearfix">
@@ -31,7 +49,6 @@
     <th><span>Phone</span></th>
     <th><span>ClassRoom</span></th>
     <th><span>Action</span></th>
-    <th><span></span></th>
 </tr>
 </thead>
 
@@ -60,13 +77,13 @@
                 ${student.getClassRoom()}
         </td>
     <td>
-        <button > <a href="/student?action=edit&id=`${student.getId()}`" class="table-link">
+        <button > <a href="/student?action=edit&id=${student.getId()}" class="table-link">
     <span class="fa-stack">
     <i class="fa fa-square fa-stack-2x"></i>
     <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
     </span>
         Edit</a></button>
-        <button> <a href="/student?action=delete&id=`${student.getId()}" class="table-link danger">
+        <button> <a onclick="return confirm('Are you sure?')" href="/student?action=delete&id=${student.getId()}" class="table-link danger">
     <span class="fa-stack">
     <i class="fa fa-square fa-stack-2x"></i>
     <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -75,7 +92,6 @@
     </td>
     </tr>
     <tr>
-    <td>
         </c:forEach>
     </div>
     </div>

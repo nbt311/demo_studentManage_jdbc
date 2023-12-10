@@ -12,7 +12,7 @@
     <title>Edit Student</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/addStudent.css">
+    <link rel="stylesheet" href="/css/addStudent.css">
 </head>
 <body>
 <div class="container h-100">
@@ -26,10 +26,6 @@
                     <div class="card-body">
                         <div class="m-sm-4">
                             <form method="post">
-                                <div class="form-group">
-                                    <label>id</label>
-                                    <input class="form-control form-control-lg" type="text" name="id" value="${student.getId()}" style="display: none;">
-                                </div>
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input class="form-control form-control-lg" type="text" name="name" value="${student.getName()}">
@@ -55,8 +51,7 @@
                                     <input class="form-control form-control-lg" type="text" name="classRoom" value="${student.getClassRoom()}">
                                 </div>
                                 <div class="text-center mt-3">
-                                    <button type="submit" class="btn btn-primary"><a href="/student">Submit</a></button>
-
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
                         </div>

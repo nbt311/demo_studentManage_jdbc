@@ -8,7 +8,8 @@ public interface StudentDAO {
     List<Student> getAllStudent();
     void addStudent(Student student);
     Student findStudentByID(int id);
-    Student findStudentByName(String name);
+    List<Student> findStudentByName(String key);
     void editStudent(Student student);
-    void deleteStudent(Student student);
+
+    void deleteStudent(int id);
 }

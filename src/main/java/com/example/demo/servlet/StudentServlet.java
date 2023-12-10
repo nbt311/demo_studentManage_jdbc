@@ -32,6 +32,12 @@ public class StudentServlet extends HttpServlet {
                 case "edit":
                     studentController.showFormEditStudent(req, resp);
                     break;
+                case "search":
+                    studentController.showListStudent(req, resp);
+                    break;
+                case "delete":
+                    studentController.deleteStudent(req, resp);
+                    break;
                 default:
                     studentController.showListStudent(req, resp);
             }
@@ -48,11 +54,12 @@ public class StudentServlet extends HttpServlet {
             action = "";
         }
         try {
-            switch (action){
+            switch (action) {
                 case "add":
                     studentController.addStudent(req, resp);
                     break;
                 case "edit":
+                    studentController.editStudent(req, resp);
                     break;
             }
         } catch (ServletException e) {
